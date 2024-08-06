@@ -1,0 +1,17 @@
+<div class="taskAssignmentForm">
+    <form [formGroup]="taskAssignmentForm" (ngSubmit)="onSubmit()" class="taskForm">
+      <div class="editField">
+        <label class="custumLable">Task Name </label>
+        <input class="inputField" type="text" formControlName="name">
+      </div>
+      <div class="editField">
+        <label class="custumLable">Assign To</label>
+        <select class="inputField" formControlName="assigned_to">
+          <option *ngFor="let user of users" [value]="user.name">{{ user.name }}</option>
+        </select>
+      </div>
+      <div class="editField">
+        <app-button type="submit" [btnLable]="'Assign Task'"></app-button>
+      </div>
+    </form>
+  </div>

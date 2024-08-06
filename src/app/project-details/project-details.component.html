@@ -1,0 +1,34 @@
+<div class="taskUpdateForm">
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="taskForm">
+        <div class="editField">
+            <label class="custumLable">Name </label>
+            <input class="inputField" type="text" formControlName="name">
+        </div>
+        <div class="editField">
+            <label class="custumLable">Description</label>
+            <input class="inputField" type="text" formControlName="description">
+        </div>
+        <div class="editField">
+            <label class="custumLable">Start Date</label>
+            <input class="inputField" type="date" formControlName="start_date">
+        </div>
+        <div class="editField">
+            <label class="custumLable">End Date</label>
+            <input class="inputField" type="date" formControlName="end_date">
+        </div>
+
+        <div class="editField" *ngIf="assignee">
+            <label class="assigneName">Assignee</label>
+            <div>
+                <span>{{assignee}}</span>
+            </div>
+        </div>
+
+        <div class="editField">
+            <app-button type="submit" [btnLable]="'Update Data'"></app-button>
+        </div>
+      </form>
+      <div class="editField">
+        <app-button type="submit" [btnLable]="'Assign'" (click)="assignTask()"></app-button>
+    </div>
+</div>

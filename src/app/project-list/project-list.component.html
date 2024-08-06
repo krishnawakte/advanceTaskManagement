@@ -1,0 +1,57 @@
+<div class="tableData">
+    <table class="tableResponsive">
+        <thead>
+        <tr class="tableHeader">
+            <th class="tHeader">Sr.No.</th>
+            <th class="tHeader">Name</th>
+            <th class="tHeader">Description</th>
+            <th class="tHeader">Start Date</th>
+            <th class="tHeader">End Date</th>
+            <th class="tHeader">Actions</th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr class="tBodyHeader" *ngFor="let project of data; let i = index" (click)="selectproject(project)">
+                <td class="tBodyData">{{project.id}}</td>
+                <td class="tBodyData">{{project.name}}</td>
+                <td class="tBodyData">{{project.description}}</td>
+                <td class="tBodyData">{{project.start_date}}</td>
+                <td class="tBodyData">{{project.end_date}}</td>
+                <td class="tBodyData">
+                    <app-button type="submit" [btnLable]="'Delete'" (click)="deleteproject(i)"></app-button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-button type="submit" [btnLable]="'Create project'" (click)="showForm = true"></app-button>
+
+    <div *ngIf="showForm">
+        <form (ngSubmit)="createproject()">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" [(ngModel)]="newproject.name">
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <input type="text" id="description"  name="description" [(ngModel)]="newproject.description">
+            </div>
+
+            <div>
+                <label for="startDate">Start Date:</label>
+                <input type="text" id="startDate" name="startDate" [(ngModel)]="newproject.start_date">
+            </div>
+
+            <div>
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate"  name="endDate" [(ngModel)]="newproject.end_date">
+            </div>
+
+            <div>
+                <app-button type="submit" [btnLable]="'Create project'"></app-button>
+                <app-button type="button" [btnLable]="'Cancel'"  (click)="showForm = false"></app-button>
+            </div>
+        </form>
+    </div>
+</div>
